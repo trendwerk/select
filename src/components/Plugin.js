@@ -4,6 +4,7 @@ export class Plugin {
   init() {
     jQuery.fn.asSelect = function asSelect() {
       const select = new Select(jQuery(this));
+      select.init();
     };
   }
 }
