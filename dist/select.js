@@ -78,7 +78,7 @@
 	    key: 'init',
 	    value: function init() {
 	      jQuery.fn.asSelect = function asSelect() {
-	        var select = new _Select.Select(jQuery(this));
+	        var select = new _Select.Select(jQuery(this), jQuery(document));
 	        select.init();
 	      };
 	    }
@@ -102,16 +102,32 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Select = exports.Select = function () {
-	  function Select($element) {
+	  function Select($element, $document) {
 	    _classCallCheck(this, Select);
 
+	    this.$document = $document;
 	    this.$element = $element;
 	  }
 
 	  _createClass(Select, [{
 	    key: 'init',
 	    value: function init() {
-	      console.log('init');
+	      this.registerEvents();
+	    }
+	  }, {
+	    key: 'registerEvents',
+	    value: function registerEvents() {
+	      var _this = this;
+
+	      this.$document.mouseup(function (event) {
+	        if (!_this.$element.is(event.target) && _this.$element.has(event.target).length === 0) {
+	          _this.$element.removeClass('open');
+	          _this.$element.find('ul').slideUp(100);
+	        } else {
+	          _this.$element.toggleClass('open');
+	          _this.$element.find('ul').slideToggle(100);
+	        }
+	      });
 	    }
 	  }]);
 
