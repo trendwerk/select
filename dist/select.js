@@ -54,15 +54,18 @@
 /***/ },
 /* 1 */,
 /* 2 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.Plugin = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Select = __webpack_require__(3);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -72,14 +75,34 @@
 	  }
 
 	  _createClass(Plugin, [{
-	    key: "init",
+	    key: 'init',
 	    value: function init() {
-	      jQuery.fn.asSelect = function select() {};
+	      jQuery.fn.asSelect = function asSelect() {
+	        var select = new _Select.Select(jQuery(this));
+	      };
 	    }
 	  }]);
 
 	  return Plugin;
 	}();
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Select = exports.Select = function Select($element) {
+	  _classCallCheck(this, Select);
+
+	  this.$element = $element;
+	};
 
 /***/ }
 /******/ ]);

@@ -1,5 +1,9 @@
+import { Select } from './Select';
+
 export class Plugin {
   init() {
-    jQuery.fn.asSelect = function select() {};
+    jQuery.fn.asSelect = function asSelect() {
+      const select = new Select(jQuery(this));
+    };
   }
 }
