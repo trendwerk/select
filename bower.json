@@ -1,0 +1,6 @@
+{
+  "name": "select",
+  "dependencies": {
+    "jquery": "~3"
+  }
+}
