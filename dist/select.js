@@ -77,8 +77,12 @@
 	  _createClass(Plugin, [{
 	    key: 'init',
 	    value: function init() {
-	      jQuery.fn.asSelect = function asSelect() {
-	        var select = new _Select.Select(jQuery(this), jQuery(document));
+	      jQuery.fn.asSelect = function asSelect(options) {
+	        var defaults = {
+	          speed: 100
+	        };
+
+	        var select = new _Select.Select(jQuery(this), jQuery(document), jQuery.extend(defaults, options));
 	        select.init();
 	      };
 	    }
@@ -102,11 +106,12 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Select = exports.Select = function () {
-	  function Select($element, $document) {
+	  function Select($element, $document, options) {
 	    _classCallCheck(this, Select);
 
 	    this.$document = $document;
 	    this.$element = $element;
+	    this.speed = options.speed;
 	  }
 
 	  _createClass(Select, [{
@@ -122,10 +127,10 @@
 	      this.$document.mouseup(function (event) {
 	        if (!_this.$element.is(event.target) && _this.$element.has(event.target).length === 0) {
 	          _this.$element.removeClass('open');
-	          _this.$element.find('ul').slideUp(100);
+	          _this.$element.find('ul').slideUp(_this.speed);
 	        } else {
 	          _this.$element.toggleClass('open');
-	          _this.$element.find('ul').slideToggle(100);
+	          _this.$element.find('ul').slideToggle(_this.speed);
 	        }
 	      });
 	    }
