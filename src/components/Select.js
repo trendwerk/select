@@ -12,7 +12,7 @@ export class Select {
   }
 
   _registerEvents() {
-    this.$document.mousedown(event => {
+    this.$document.on(this._getEvent(), event => {
       if (! this.$element.is(event.target) && this.$element.has(event.target).length === 0) {
         this._close();
       } else {
@@ -23,6 +23,10 @@ export class Select {
         }
       }
     });
+  }
+
+  _getEvent() {
+    return this._isTouch() ? 'touchstart' : 'mousedown';
   }
 
   _toggle() {
@@ -46,5 +50,12 @@ export class Select {
     $item.addClass('active');
 
     this.$field.val(value);
+  }
+
+  _isTouch() {
+    return (
+      ('ontouchstart' in window) ||
+      (window.DocumentTouch && document instanceof DocumentTouch)
+    );
   }
 }

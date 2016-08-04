@@ -125,7 +125,7 @@
 	    value: function _registerEvents() {
 	      var _this = this;
 
-	      this.$document.mousedown(function (event) {
+	      this.$document.on(this._getEvent(), function (event) {
 	        if (!_this.$element.is(event.target) && _this.$element.has(event.target).length === 0) {
 	          _this._close();
 	        } else {
@@ -136,6 +136,11 @@
 	          }
 	        }
 	      });
+	    }
+	  }, {
+	    key: '_getEvent',
+	    value: function _getEvent() {
+	      return this._isTouch() ? 'touchstart' : 'mousedown';
 	    }
 	  }, {
 	    key: '_toggle',
@@ -162,6 +167,11 @@
 	      $item.addClass('active');
 
 	      this.$field.val(value);
+	    }
+	  }, {
+	    key: '_isTouch',
+	    value: function _isTouch() {
+	      return 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
 	    }
 	  }]);
 
