@@ -1,13 +1,39 @@
-@mixin select() {
+@mixin select($args: ()) {
+  $settings: map-merge((
+    'background': white,
+    'background-active': rgb(240, 240, 240),
+    'border': 1px solid rgb(200, 200, 200),
+    'padding': 10px 20px,
+  ), $args);
+
   cursor: pointer;
   position: relative;
 
+  label {
+    border: map-get($settings, 'border');
+    cursor: pointer;
+    display: block;
+    padding: map-get($settings, 'padding');
+  }
+
   ul {
+    background: map-get($settings, 'background');
     display: none;
     list-style: none;
     margin: 0;
     padding: 0;
     position: absolute;
     width: 100%;
+  }
+
+  li {
+    border: map-get($settings, 'border');
+    border-top: 0;
+    padding: map-get($settings, 'padding');
+
+    &.active,
+    &:hover {
+      background: map-get($settings, 'background-active');
+    }
   }
 }
