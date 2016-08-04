@@ -78,6 +78,7 @@
 	    value: function init() {
 	      jQuery.fn.asSelect = function asSelect(options) {
 	        var defaults = {
+	          deselectable: false,
 	          speed: 100
 	        };
 
@@ -112,14 +113,27 @@
 	    this.$element = $element;
 	    this.$field = $element.find('input[type="hidden"]');
 	    this.$label = $element.find('label');
+	    this.deselectable = options.deselectable;
 	    this.speed = options.speed;
 	  }
 
 	  _createClass(Select, [{
 	    key: 'init',
 	    value: function init() {
+	      if (this.deselectable) {
+	        this._createDeselectable();
+	      }
+
 	      this._registerEvents();
 	      this._populate();
+	    }
+	  }, {
+	    key: '_createDeselectable',
+	    value: function _createDeselectable() {
+	      var label = this.$label.text();
+	      this.$element.find('ul').prepend('<li data-value="">' + label + '</li>');
+
+	      this._select(this.$element.find('ul > li').first());
 	    }
 	  }, {
 	    key: '_registerEvents',

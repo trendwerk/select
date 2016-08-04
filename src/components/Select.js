@@ -4,12 +4,24 @@ export class Select {
     this.$element = $element;
     this.$field = $element.find('input[type="hidden"]');
     this.$label = $element.find('label');
+    this.deselectable = options.deselectable;
     this.speed = options.speed;
   }
 
   init() {
+    if (this.deselectable) {
+      this._createDeselectable();
+    }
+
     this._registerEvents();
     this._populate();
+  }
+
+  _createDeselectable() {
+    const label = this.$label.text();
+    this.$element.find('ul').prepend(`<li data-value="">${label}</li>`);
+
+    this._select(this.$element.find('ul > li').first());
   }
 
   _registerEvents() {
