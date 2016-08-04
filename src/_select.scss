@@ -8,6 +8,7 @@
     'max-height': 300px,
     'max-height-screen-ratio': 0.7,
     'padding': 10px 20px,
+    'webkit-scrollbar': true,
   ), $args);
 
   cursor: pointer;
@@ -21,9 +22,12 @@
   }
 
   ul {
-    @include _webkit-show-scrollbar((
-      'border': map-get($settings, 'border'),
-    ));
+    @if map-get($settings, 'webkit-scrollbar') {
+      @include _webkit-show-scrollbar((
+        'border': map-get($settings, 'border'),
+      ));
+    }
+
     background: map-get($settings, 'background');
     border-bottom: map-get($settings, 'border');
     display: none;
