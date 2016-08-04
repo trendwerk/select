@@ -1,4 +1,4 @@
-@import 'components/webkit-show-scrollbar';
+@import 'lib/webkit-show-scrollbar';
 
 @mixin select($args: ()) {
   $settings: map-merge((
