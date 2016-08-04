@@ -1,3 +1,5 @@
+@import 'components/webkit-show-scrollbar';
+
 @mixin select($args: ()) {
   $settings: map-merge((
     'background': white,
@@ -19,6 +21,9 @@
   }
 
   ul {
+    @include _webkit-show-scrollbar((
+      'border': map-get($settings, 'border'),
+    ));
     background: map-get($settings, 'background');
     border-bottom: map-get($settings, 'border');
     display: none;
