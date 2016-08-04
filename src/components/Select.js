@@ -3,6 +3,7 @@ export class Select {
     this.$document = jQuery(document);
     this.$element = $element;
     this.$field = $element.find('input[type="hidden"]');
+    this.$items = null;
     this.$label = $element.find('label');
     this.$list = $element.find('ul');
     this.deselectable = options.deselectable;
@@ -10,6 +11,8 @@ export class Select {
   }
 
   init() {
+    this._updateItems();
+
     if (this.deselectable) {
       this._createDeselectable();
     }
@@ -18,11 +21,16 @@ export class Select {
     this._populate();
   }
 
+  _updateItems() {
+    this.$items = this.$list.find('li');
+  }
+
   _createDeselectable() {
     const label = this.$label.text();
     this.$list.prepend(`<li data-value="">${label}</li>`);
+    this._updateItems();
 
-    this._select(this.$list.find('li').first());
+    this._select(this.$items.first());
   }
 
   _registerEvents() {
@@ -32,7 +40,7 @@ export class Select {
       } else {
         this._toggle();
 
-        if (this.$element.find('li').is(event.target)) {
+        if (this.$items.is(event.target)) {
           this._select(jQuery(event.target));
         }
       }
@@ -64,13 +72,12 @@ export class Select {
   }
 
   _select($item) {
-    const $allItems = this.$element.find('li');
     const label = $item.text();
     const value = $item.data('value');
 
     this.$label.text(label);
 
-    $allItems.removeClass('active');
+    this.$items.removeClass('active');
     $item.addClass('active');
 
     this.$field.val(value);

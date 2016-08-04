@@ -112,6 +112,7 @@
 	    this.$document = jQuery(document);
 	    this.$element = $element;
 	    this.$field = $element.find('input[type="hidden"]');
+	    this.$items = null;
 	    this.$label = $element.find('label');
 	    this.$list = $element.find('ul');
 	    this.deselectable = options.deselectable;
@@ -121,6 +122,8 @@
 	  _createClass(Select, [{
 	    key: 'init',
 	    value: function init() {
+	      this._updateItems();
+
 	      if (this.deselectable) {
 	        this._createDeselectable();
 	      }
@@ -129,12 +132,18 @@
 	      this._populate();
 	    }
 	  }, {
+	    key: '_updateItems',
+	    value: function _updateItems() {
+	      this.$items = this.$list.find('li');
+	    }
+	  }, {
 	    key: '_createDeselectable',
 	    value: function _createDeselectable() {
 	      var label = this.$label.text();
 	      this.$list.prepend('<li data-value="">' + label + '</li>');
+	      this._updateItems();
 
-	      this._select(this.$list.find('li').first());
+	      this._select(this.$items.first());
 	    }
 	  }, {
 	    key: '_registerEvents',
@@ -147,7 +156,7 @@
 	        } else {
 	          _this._toggle();
 
-	          if (_this.$element.find('li').is(event.target)) {
+	          if (_this.$items.is(event.target)) {
 	            _this._select(jQuery(event.target));
 	          }
 	        }
@@ -184,13 +193,12 @@
 	  }, {
 	    key: '_select',
 	    value: function _select($item) {
-	      var $allItems = this.$element.find('li');
 	      var label = $item.text();
 	      var value = $item.data('value');
 
 	      this.$label.text(label);
 
-	      $allItems.removeClass('active');
+	      this.$items.removeClass('active');
 	      $item.addClass('active');
 
 	      this.$field.val(value);
