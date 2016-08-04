@@ -53,7 +53,7 @@ export class Select {
     const value = this.$field.val();
 
     if (value) {
-      const $selected = this.$element.find(`li[data-value="${value}"]`);
+      const $selected = this.$items.filter(`[data-value="${value}"]`).first();
 
       if ($selected.length) {
         this._select($selected);
