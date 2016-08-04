@@ -3,6 +3,8 @@
     'background': white,
     'background-active': rgb(240, 240, 240),
     'border': 1px solid rgb(200, 200, 200),
+    'max-height': 300px,
+    'max-height-screen-ratio': 0.7,
     'padding': 10px 20px,
   ), $args);
 
@@ -18,12 +20,20 @@
 
   ul {
     background: map-get($settings, 'background');
+    border-bottom: map-get($settings, 'border');
     display: none;
     list-style: none;
     margin: 0;
+    max-height: (100vh * map-get($settings, 'max-height-screen-ratio'));
+    overflow-x: hidden;
+    overflow-y: scroll;
     padding: 0;
     position: absolute;
     width: 100%;
+
+    @media(min-height: (map-get($settings, 'max-height') / map-get($settings, 'max-height-screen-ratio'))) {
+      max-height: map-get($settings, 'max-height');
+    }
   }
 
   li {
