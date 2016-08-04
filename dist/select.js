@@ -80,9 +80,9 @@
 	    value: function init() {
 	      jQuery.fn.asSelect = function asSelect(options) {
 	        var defaults = {
-	          deselectable: false,
+	          deselectable: true,
 	          onSelect: null,
-	          speed: 100
+	          speed: 200
 	        };
 
 	        var select = new _Select.Select(jQuery(this), jQuery.extend(defaults, options));

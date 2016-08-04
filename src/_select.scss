@@ -3,8 +3,8 @@
 @mixin select($args: ()) {
   $settings: map-merge((
     'background': white,
-    'background-active': rgb(240, 240, 240),
-    'border': 1px solid rgb(200, 200, 200),
+    'background-active': rgb(238, 238, 238),
+    'border': 1px solid rgb(204, 204, 204),
     'max-height': 300px,
     'max-height-screen-ratio': 0.7,
     'padding': 10px 20px,
