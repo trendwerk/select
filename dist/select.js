@@ -143,7 +143,9 @@
 	      this.$list.prepend('<li data-value="">' + label + '</li>');
 	      this._updateItems();
 
-	      this._select(this.$items.first());
+	      if (!this.$field.val()) {
+	        this._select(this.$items.first());
+	      }
 	    }
 	  }, {
 	    key: '_registerEvents',
