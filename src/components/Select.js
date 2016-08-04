@@ -12,12 +12,20 @@ export class Select {
   _registerEvents() {
     this.$document.mouseup(event => {
       if (! this.$element.is(event.target) && this.$element.has(event.target).length === 0) {
-        this.$element.removeClass('open');
-        this.$element.find('ul').slideUp(this.speed);
+        this._close();
       } else {
-        this.$element.toggleClass('open');
-        this.$element.find('ul').slideToggle(this.speed);
+        this._toggle();
       }
     });
+  }
+
+  _toggle() {
+    this.$element.toggleClass('open');
+    this.$element.find('ul').slideToggle(this.speed);
+  }
+
+  _close() {
+    this.$element.removeClass('open');
+    this.$element.find('ul').slideUp(this.speed);
   }
 }

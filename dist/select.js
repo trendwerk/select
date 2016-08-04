@@ -125,13 +125,23 @@
 
 	      this.$document.mouseup(function (event) {
 	        if (!_this.$element.is(event.target) && _this.$element.has(event.target).length === 0) {
-	          _this.$element.removeClass('open');
-	          _this.$element.find('ul').slideUp(_this.speed);
+	          _this._close();
 	        } else {
-	          _this.$element.toggleClass('open');
-	          _this.$element.find('ul').slideToggle(_this.speed);
+	          _this._toggle();
 	        }
 	      });
+	    }
+	  }, {
+	    key: '_toggle',
+	    value: function _toggle() {
+	      this.$element.toggleClass('open');
+	      this.$element.find('ul').slideToggle(this.speed);
+	    }
+	  }, {
+	    key: '_close',
+	    value: function _close() {
+	      this.$element.removeClass('open');
+	      this.$element.find('ul').slideUp(this.speed);
 	    }
 	  }]);
 
