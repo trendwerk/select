@@ -38,7 +38,10 @@
     border: map-get($settings, 'border');
     cursor: pointer;
     display: block;
+    overflow: hidden;
     padding: map-get($padding, 'vertical') map-get($padding, 'horizontal');
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     @if $arrow {
       padding-right: (map-get($arrow, 'offset') + map-get($padding, 'horizontal'));
