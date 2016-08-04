@@ -119,6 +119,7 @@
 	    key: 'init',
 	    value: function init() {
 	      this._registerEvents();
+	      this._loadValues();
 	    }
 	  }, {
 	    key: '_registerEvents',
@@ -136,6 +137,17 @@
 	          }
 	        }
 	      });
+	    }
+	  }, {
+	    key: '_loadValues',
+	    value: function _loadValues() {
+	      if (this.$field.val()) {
+	        var $selected = this.$element.find('li[data-value="' + this.$field.val() + '"]');
+
+	        if ($selected.length) {
+	          this._select($selected);
+	        }
+	      }
 	    }
 	  }, {
 	    key: '_getEvent',

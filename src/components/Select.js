@@ -9,6 +9,7 @@ export class Select {
 
   init() {
     this._registerEvents();
+    this._loadValues();
   }
 
   _registerEvents() {
@@ -23,6 +24,16 @@ export class Select {
         }
       }
     });
+  }
+
+  _loadValues() {
+    if (this.$field.val()) {
+      const $selected = this.$element.find(`li[data-value="${this.$field.val()}"]`);
+
+      if ($selected.length) {
+        this._select($selected);
+      }
+    }
   }
 
   _getEvent() {
