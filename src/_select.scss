@@ -3,7 +3,7 @@
 @mixin select($args: ()) {
   $defaults: (
     'arrow': (
-      'color': rgba(0, 0, 0, 0.75),
+      'color': black,
       'offset': 20px,
       'size': 6px 5px,
     ),
