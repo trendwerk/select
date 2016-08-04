@@ -6,10 +6,10 @@ export class Select {
   }
 
   init() {
-    this.registerEvents();
+    this._registerEvents();
   }
 
-  registerEvents() {
+  _registerEvents() {
     this.$document.mouseup(event => {
       if (! this.$element.is(event.target) && this.$element.has(event.target).length === 0) {
         this.$element.removeClass('open');
