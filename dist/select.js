@@ -159,12 +159,14 @@
 	      this.$document.on(this._getEvent(), function (event) {
 	        if (!_this.$element.is(event.target) && _this.$element.has(event.target).length === 0) {
 	          _this._close();
-	        } else {
-	          _this._toggle();
+	        }
+	      });
 
-	          if (_this.$items.is(event.target)) {
-	            _this._select(jQuery(event.target));
-	          }
+	      this.$element.on('click', function (event) {
+	        _this._toggle();
+
+	        if (_this.$items.is(event.target)) {
+	          _this._select(jQuery(event.target));
 	        }
 	      });
 	    }

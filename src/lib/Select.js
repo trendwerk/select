@@ -40,12 +40,14 @@ export class Select {
     this.$document.on(this._getEvent(), event => {
       if (! this.$element.is(event.target) && this.$element.has(event.target).length === 0) {
         this._close();
-      } else {
-        this._toggle();
+      }
+    });
 
-        if (this.$items.is(event.target)) {
-          this._select(jQuery(event.target));
-        }
+    this.$element.on('click', event => {
+      this._toggle();
+
+      if (this.$items.is(event.target)) {
+        this._select(jQuery(event.target));
       }
     });
   }
