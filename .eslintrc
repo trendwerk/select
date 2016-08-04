@@ -1,7 +1,11 @@
 {
   'extends': 'airbnb-base',
+  'env': {
+    'es6': true,
+    'jquery': true,
+  },
   'globals': {
-  	'$': true,
+    'DocumentTouch': true,
   },
   'rules': {
   	'no-param-reassign': [2, { props: false }],
