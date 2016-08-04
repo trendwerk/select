@@ -36,7 +36,7 @@ export class Select {
   }
 
   _select($item) {
-    const $allItems = $item.find('li');
+    const $allItems = this.$element.find('li');
     const label = $item.text();
     const value = $item.data('value');
 

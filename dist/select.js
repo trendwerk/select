@@ -152,7 +152,7 @@
 	  }, {
 	    key: '_select',
 	    value: function _select($item) {
-	      var $allItems = $item.find('li');
+	      var $allItems = this.$element.find('li');
 	      var label = $item.text();
 	      var value = $item.data('value');
 
