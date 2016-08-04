@@ -113,6 +113,7 @@
 	    this.$element = $element;
 	    this.$field = $element.find('input[type="hidden"]');
 	    this.$label = $element.find('label');
+	    this.$list = $element.find('ul');
 	    this.deselectable = options.deselectable;
 	    this.speed = options.speed;
 	  }
@@ -131,9 +132,9 @@
 	    key: '_createDeselectable',
 	    value: function _createDeselectable() {
 	      var label = this.$label.text();
-	      this.$element.find('ul').prepend('<li data-value="">' + label + '</li>');
+	      this.$list.prepend('<li data-value="">' + label + '</li>');
 
-	      this._select(this.$element.find('ul > li').first());
+	      this._select(this.$list.find('li').first());
 	    }
 	  }, {
 	    key: '_registerEvents',
@@ -172,13 +173,13 @@
 	    key: '_toggle',
 	    value: function _toggle() {
 	      this.$element.toggleClass('open');
-	      this.$element.find('ul').slideToggle(this.speed);
+	      this.$list.slideToggle(this.speed);
 	    }
 	  }, {
 	    key: '_close',
 	    value: function _close() {
 	      this.$element.removeClass('open');
-	      this.$element.find('ul').slideUp(this.speed);
+	      this.$list.slideUp(this.speed);
 	    }
 	  }, {
 	    key: '_select',
