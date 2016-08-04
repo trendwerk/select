@@ -16,7 +16,7 @@
       'horizontal': 20px,
       'vertical': 10px,
     ),
-    'webkit-scrollbar': true,
+    'webkit-scrollbar': (),
   );
 
   $settings: map-merge($defaults, $args);
@@ -58,9 +58,9 @@
 
   ul {
     @if map-get($settings, 'webkit-scrollbar') {
-      @include _webkit-show-scrollbar((
+      @include _webkit-show-scrollbar(map-merge((
         'border': map-get($settings, 'border'),
-      ));
+      ), map-get($settings, 'webkit-scrollbar')));
     }
 
     background: map-get($settings, 'background');

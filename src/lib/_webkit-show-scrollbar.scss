@@ -1,13 +1,18 @@
-@mixin _webkit-show-scrollbar($settings) {
+@mixin _webkit-show-scrollbar($args) {
+  $settings: map-merge((
+    'background': rgb(238, 238, 238),
+    'foreground': rgba(0, 0, 0, 0.5),
+  ), $args);
+
   &::-webkit-scrollbar {
     -webkit-appearance: none;
-    background: rgb(238, 238, 238);
+    background: map-get($settings, 'background');
     border-right: map-get($settings, 'border');
     width: 7px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: map-get($settings, 'foreground');
     border-radius: 5px;
   }
 }
