@@ -171,6 +171,16 @@
 	      });
 	    }
 	  }, {
+	    key: '_getOutsideEvent',
+	    value: function _getOutsideEvent() {
+	      return this._isTouch() ? 'touchstart' : 'mousedown';
+	    }
+	  }, {
+	    key: '_getInsideEvent',
+	    value: function _getInsideEvent() {
+	      return this._isTouch() ? 'click' : 'mousedown';
+	    }
+	  }, {
 	    key: '_populate',
 	    value: function _populate() {
 	      var value = this.$field.val();
@@ -182,16 +192,6 @@
 	          this._select($selected);
 	        }
 	      }
-	    }
-	  }, {
-	    key: '_getOutsideEvent',
-	    value: function _getOutsideEvent() {
-	      return this._isTouch() ? 'touchstart' : 'mousedown';
-	    }
-	  }, {
-	    key: '_getInsideEvent',
-	    value: function _getInsideEvent() {
-	      return this._isTouch() ? 'click' : 'mousedown';
 	    }
 	  }, {
 	    key: '_toggle',

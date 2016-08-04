@@ -52,6 +52,14 @@ export class Select {
     });
   }
 
+  _getOutsideEvent() {
+    return this._isTouch() ? 'touchstart' : 'mousedown';
+  }
+
+  _getInsideEvent() {
+    return this._isTouch() ? 'click' : 'mousedown';
+  }
+
   _populate() {
     const value = this.$field.val();
 
@@ -62,14 +70,6 @@ export class Select {
         this._select($selected);
       }
     }
-  }
-
-  _getOutsideEvent() {
-    return this._isTouch() ? 'touchstart' : 'mousedown';
-  }
-
-  _getInsideEvent() {
-    return this._isTouch() ? 'click' : 'mousedown';
   }
 
   _toggle() {
