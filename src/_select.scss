@@ -37,12 +37,12 @@
       padding-right: (map-get($arrow, 'offset') + map-get($padding, 'horizontal'));
 
       &::after {
-        border-color: map-get($arrow, 'color') transparent transparent transparent;
+        border-color: map-get($arrow, 'color') transparent transparent;
         border-style: solid;
         border-width: map-get($arrow, 'size');
         content: '';
-        right: map-get($arrow, 'offset');
         position: absolute;
+        right: map-get($arrow, 'offset');
         top: 50%;
         transform: translateY(-25%);
       }
