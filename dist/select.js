@@ -151,14 +151,15 @@
 	    }
 	  }, {
 	    key: '_select',
-	    value: function _select($element) {
-	      var label = $element.text();
-	      var value = $element.data('value');
+	    value: function _select($item) {
+	      var $allItems = $item.find('li');
+	      var label = $item.text();
+	      var value = $item.data('value');
 
 	      this.$label.text(label);
 
-	      this.$element.find('li').removeClass('active');
-	      $element.addClass('active');
+	      $allItems.removeClass('active');
+	      $item.addClass('active');
 
 	      this.$field.val(value);
 	    }

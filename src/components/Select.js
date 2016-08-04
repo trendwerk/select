@@ -35,14 +35,15 @@ export class Select {
     this.$element.find('ul').slideUp(this.speed);
   }
 
-  _select($element) {
-    const label = $element.text();
-    const value = $element.data('value');
+  _select($item) {
+    const $allItems = $item.find('li');
+    const label = $item.text();
+    const value = $item.data('value');
 
     this.$label.text(label);
 
-    this.$element.find('li').removeClass('active');
-    $element.addClass('active');
+    $allItems.removeClass('active');
+    $item.addClass('active');
 
     this.$field.val(value);
   }
