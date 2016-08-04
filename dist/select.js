@@ -115,6 +115,7 @@
 	    this.$document = jQuery(document);
 	    this.$element = $element;
 	    this.$field = $element.find('input[type="hidden"]');
+	    this.$htmlBody = jQuery('html, body');
 	    this.$items = null;
 	    this.$label = $element.find('label');
 	    this.$list = $element.find('ul');
@@ -163,6 +164,7 @@
 	      });
 
 	      this.$element.on(this._getInsideEvent(), function (event) {
+	        _this._maybeScrollToElement();
 	        _this._toggle();
 
 	        if (_this.$items.is(event.target)) {
@@ -198,6 +200,15 @@
 	    value: function _toggle() {
 	      this.$element.toggleClass('open');
 	      this.$list.slideToggle(this.speed);
+	    }
+	  }, {
+	    key: '_maybeScrollToElement',
+	    value: function _maybeScrollToElement() {
+	      if (this._isTouch() && !this.$element.hasClass('open')) {
+	        this.$htmlBody.animate({
+	          scrollTop: this.$element.offset().top
+	        });
+	      }
 	    }
 	  }, {
 	    key: '_close',

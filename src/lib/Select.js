@@ -3,6 +3,7 @@ export class Select {
     this.$document = jQuery(document);
     this.$element = $element;
     this.$field = $element.find('input[type="hidden"]');
+    this.$htmlBody = jQuery('html, body');
     this.$items = null;
     this.$label = $element.find('label');
     this.$list = $element.find('ul');
@@ -44,6 +45,7 @@ export class Select {
     });
 
     this.$element.on(this._getInsideEvent(), event => {
+      this._maybeScrollToElement();
       this._toggle();
 
       if (this.$items.is(event.target)) {
@@ -75,6 +77,14 @@ export class Select {
   _toggle() {
     this.$element.toggleClass('open');
     this.$list.slideToggle(this.speed);
+  }
+
+  _maybeScrollToElement() {
+    if (this._isTouch() && ! this.$element.hasClass('open')) {
+      this.$htmlBody.animate({
+        scrollTop: this.$element.offset().top,
+      });
+    }
   }
 
   _close() {
