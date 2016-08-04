@@ -111,7 +111,7 @@
 	    this.$document = jQuery(document);
 	    this.$element = $element;
 	    this.$field = $element.find('input[type="hidden"]');
-	    this.$label = $element.find('span');
+	    this.$label = $element.find('label');
 	    this.speed = options.speed;
 	  }
 
