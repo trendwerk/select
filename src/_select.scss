@@ -2,23 +2,51 @@
 
 @mixin select($args: ()) {
   $settings: map-merge((
+    'arrow': (
+      'color': rgba(0, 0, 0, 0.75),
+      'offset': 20px,
+      'size': 6px 5px,
+    ),
     'background': white,
     'background-active': rgb(238, 238, 238),
     'border': 1px solid rgb(204, 204, 204),
     'max-height': 300px,
     'max-height-screen-ratio': 0.7,
-    'padding': 10px 20px,
+    'padding': (
+      'horizontal': 20px,
+      'vertical': 10px,
+    ),
     'webkit-scrollbar': true,
   ), $args);
+
+  $padding: map-get($settings, 'padding');
 
   cursor: pointer;
   position: relative;
 
   label {
+    background: map-get($settings, 'background');
     border: map-get($settings, 'border');
     cursor: pointer;
     display: block;
-    padding: map-get($settings, 'padding');
+    padding: map-get($padding, 'vertical') map-get($padding, 'horizontal');
+
+    $arrow: map-get($settings, 'arrow');
+
+    @if $arrow {
+      padding-right: (map-get($arrow, 'offset') + map-get($padding, 'horizontal'));
+
+      &::after {
+        border-color: map-get($arrow, 'color') transparent transparent transparent;
+        border-style: solid;
+        border-width: map-get($arrow, 'size');
+        content: '';
+        right: map-get($arrow, 'offset');
+        position: absolute;
+        top: 50%;
+        transform: translateY(-25%);
+      }
+    }
   }
 
   ul {
@@ -48,7 +76,7 @@
   li {
     border: map-get($settings, 'border');
     border-top: 0;
-    padding: map-get($settings, 'padding');
+    padding: map-get($padding, 'vertical') map-get($padding, 'horizontal');
 
     &:last-of-type {
       border-bottom: 0;
