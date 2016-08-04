@@ -125,7 +125,7 @@
 	    value: function _registerEvents() {
 	      var _this = this;
 
-	      this.$document.mouseup(function (event) {
+	      this.$document.mousedown(function (event) {
 	        if (!_this.$element.is(event.target) && _this.$element.has(event.target).length === 0) {
 	          _this._close();
 	        } else {

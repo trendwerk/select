@@ -12,7 +12,7 @@ export class Select {
   }
 
   _registerEvents() {
-    this.$document.mouseup(event => {
+    this.$document.mousedown(event => {
       if (! this.$element.is(event.target) && this.$element.has(event.target).length === 0) {
         this._close();
       } else {
