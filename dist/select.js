@@ -81,7 +81,7 @@
 	          speed: 100
 	        };
 
-	        var select = new _Select.Select(jQuery(this), jQuery(document), jQuery.extend(defaults, options));
+	        var select = new _Select.Select(jQuery(this), jQuery.extend(defaults, options));
 	        select.init();
 	      };
 	    }
@@ -105,11 +105,13 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Select = exports.Select = function () {
-	  function Select($element, $document, options) {
+	  function Select($element, options) {
 	    _classCallCheck(this, Select);
 
-	    this.$document = $document;
+	    this.$document = jQuery(document);
 	    this.$element = $element;
+	    this.$field = $element.find('input[type="hidden"]');
+	    this.$label = $element.find('span');
 	    this.speed = options.speed;
 	  }
 
@@ -128,6 +130,10 @@
 	          _this._close();
 	        } else {
 	          _this._toggle();
+
+	          if (_this.$element.find('li').is(event.target)) {
+	            _this._select(jQuery(event.target));
+	          }
 	        }
 	      });
 	    }
@@ -142,6 +148,19 @@
 	    value: function _close() {
 	      this.$element.removeClass('open');
 	      this.$element.find('ul').slideUp(this.speed);
+	    }
+	  }, {
+	    key: '_select',
+	    value: function _select($element) {
+	      var label = $element.text();
+	      var value = $element.data('value');
+
+	      this.$label.text(label);
+
+	      this.$element.find('li').removeClass('active');
+	      $element.addClass('active');
+
+	      this.$field.val(value);
 	    }
 	  }]);
 

@@ -1,7 +1,9 @@
 export class Select {
-  constructor($element, $document, options) {
-    this.$document = $document;
+  constructor($element, options) {
+    this.$document = jQuery(document);
     this.$element = $element;
+    this.$field = $element.find('input[type="hidden"]');
+    this.$label = $element.find('span');
     this.speed = options.speed;
   }
 
@@ -15,6 +17,10 @@ export class Select {
         this._close();
       } else {
         this._toggle();
+
+        if (this.$element.find('li').is(event.target)) {
+          this._select(jQuery(event.target));
+        }
       }
     });
   }
@@ -27,5 +33,17 @@ export class Select {
   _close() {
     this.$element.removeClass('open');
     this.$element.find('ul').slideUp(this.speed);
+  }
+
+  _select($element) {
+    const label = $element.text();
+    const value = $element.data('value');
+
+    this.$label.text(label);
+
+    this.$element.find('li').removeClass('active');
+    $element.addClass('active');
+
+    this.$field.val(value);
   }
 }

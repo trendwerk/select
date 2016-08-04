@@ -7,7 +7,7 @@ export class Plugin {
         speed: 100,
       };
 
-      const select = new Select(jQuery(this), jQuery(document), jQuery.extend(defaults, options));
+      const select = new Select(jQuery(this), jQuery.extend(defaults, options));
       select.init();
     };
   }
