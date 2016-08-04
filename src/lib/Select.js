@@ -43,7 +43,7 @@ export class Select {
       }
     });
 
-    this.$element.on('click', event => {
+    this.$element.on(this._getInsideEvent(), event => {
       this._toggle();
 
       if (this.$items.is(event.target)) {
@@ -66,6 +66,10 @@ export class Select {
 
   _getOutsideEvent() {
     return this._isTouch() ? 'touchstart' : 'mousedown';
+  }
+
+  _getInsideEvent() {
+    return this._isTouch() ? 'click' : 'mousedown';
   }
 
   _toggle() {

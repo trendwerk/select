@@ -156,13 +156,13 @@
 	    value: function _registerEvents() {
 	      var _this = this;
 
-	      this.$document.on(this._getEvent(), function (event) {
+	      this.$document.on(this._getOutsideEvent(), function (event) {
 	        if (!_this.$element.is(event.target) && _this.$element.has(event.target).length === 0) {
 	          _this._close();
 	        }
 	      });
 
-	      this.$element.on('click', function (event) {
+	      this.$element.on(this._getInsideEvent(), function (event) {
 	        _this._toggle();
 
 	        if (_this.$items.is(event.target)) {
@@ -184,9 +184,14 @@
 	      }
 	    }
 	  }, {
-	    key: '_getEvent',
-	    value: function _getEvent() {
+	    key: '_getOutsideEvent',
+	    value: function _getOutsideEvent() {
 	      return this._isTouch() ? 'touchstart' : 'mousedown';
+	    }
+	  }, {
+	    key: '_getInsideEvent',
+	    value: function _getInsideEvent() {
+	      return this._isTouch() ? 'click' : 'mousedown';
 	    }
 	  }, {
 	    key: '_toggle',
