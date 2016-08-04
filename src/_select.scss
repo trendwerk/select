@@ -46,6 +46,10 @@
     border-top: 0;
     padding: map-get($settings, 'padding');
 
+    &:last-of-type {
+      border-bottom: 0;
+    }
+
     &.active,
     &:hover {
       background: map-get($settings, 'background-active');
