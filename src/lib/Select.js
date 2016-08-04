@@ -37,7 +37,7 @@ export class Select {
   }
 
   _registerEvents() {
-    this.$document.on(this._getEvent(), event => {
+    this.$document.on(this._getOutsideEvent(), event => {
       if (! this.$element.is(event.target) && this.$element.has(event.target).length === 0) {
         this._close();
       }
@@ -64,7 +64,7 @@ export class Select {
     }
   }
 
-  _getEvent() {
+  _getOutsideEvent() {
     return this._isTouch() ? 'touchstart' : 'mousedown';
   }
 
