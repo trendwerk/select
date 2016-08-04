@@ -119,7 +119,7 @@
 	    key: 'init',
 	    value: function init() {
 	      this._registerEvents();
-	      this._loadValues();
+	      this._populate();
 	    }
 	  }, {
 	    key: '_registerEvents',
@@ -139,8 +139,8 @@
 	      });
 	    }
 	  }, {
-	    key: '_loadValues',
-	    value: function _loadValues() {
+	    key: '_populate',
+	    value: function _populate() {
 	      if (this.$field.val()) {
 	        var $selected = this.$element.find('li[data-value="' + this.$field.val() + '"]');
 

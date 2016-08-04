@@ -9,7 +9,7 @@ export class Select {
 
   init() {
     this._registerEvents();
-    this._loadValues();
+    this._populate();
   }
 
   _registerEvents() {
@@ -26,7 +26,7 @@ export class Select {
     });
   }
 
-  _loadValues() {
+  _populate() {
     if (this.$field.val()) {
       const $selected = this.$element.find(`li[data-value="${this.$field.val()}"]`);
 
