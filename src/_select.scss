@@ -1,7 +1,7 @@
 @import 'lib/webkit-show-scrollbar';
 
 @mixin select($args: ()) {
-  $settings: map-merge((
+  $defaults: (
     'arrow': (
       'color': rgba(0, 0, 0, 0.75),
       'offset': 20px,
@@ -17,9 +17,18 @@
       'vertical': 10px,
     ),
     'webkit-scrollbar': true,
-  ), $args);
+  );
 
-  $padding: map-get($settings, 'padding');
+  $settings: map-merge($defaults, $args);
+
+  // Deep merges
+  $arrow: map-get($settings, 'arrow');
+
+  @if $arrow {
+    $arrow: map-merge(map-get($defaults, 'arrow'), $arrow);
+  }
+
+  $padding: map-merge(map-get($defaults, 'padding'), map-get($settings, 'padding'));
 
   cursor: pointer;
   position: relative;
@@ -30,8 +39,6 @@
     cursor: pointer;
     display: block;
     padding: map-get($padding, 'vertical') map-get($padding, 'horizontal');
-
-    $arrow: map-get($settings, 'arrow');
 
     @if $arrow {
       padding-right: (map-get($arrow, 'offset') + map-get($padding, 'horizontal'));
