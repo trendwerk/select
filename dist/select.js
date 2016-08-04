@@ -79,6 +79,7 @@
 	      jQuery.fn.asSelect = function asSelect(options) {
 	        var defaults = {
 	          deselectable: false,
+	          onSelect: null,
 	          speed: 100
 	        };
 
@@ -116,6 +117,7 @@
 	    this.$label = $element.find('label');
 	    this.$list = $element.find('ul');
 	    this.deselectable = options.deselectable;
+	    this.onSelect = options.onSelect;
 	    this.speed = options.speed;
 	  }
 
@@ -206,6 +208,10 @@
 	      $item.addClass('active');
 
 	      this.$field.val(value);
+
+	      if (typeof this.onSelect === 'function') {
+	        this.onSelect($item);
+	      }
 	    }
 	  }, {
 	    key: '_isTouch',

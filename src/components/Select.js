@@ -7,6 +7,7 @@ export class Select {
     this.$label = $element.find('label');
     this.$list = $element.find('ul');
     this.deselectable = options.deselectable;
+    this.onSelect = options.onSelect;
     this.speed = options.speed;
   }
 
@@ -85,6 +86,10 @@ export class Select {
     $item.addClass('active');
 
     this.$field.val(value);
+
+    if (typeof this.onSelect === 'function') {
+      this.onSelect($item);
+    }
   }
 
   _isTouch() {

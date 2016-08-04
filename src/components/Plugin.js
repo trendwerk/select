@@ -5,6 +5,7 @@ export class Plugin {
     jQuery.fn.asSelect = function asSelect(options) {
       const defaults = {
         deselectable: false,
+        onSelect: null,
         speed: 100,
       };
 
