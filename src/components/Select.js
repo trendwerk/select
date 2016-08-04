@@ -48,8 +48,10 @@ export class Select {
   }
 
   _populate() {
-    if (this.$field.val()) {
-      const $selected = this.$element.find(`li[data-value="${this.$field.val()}"]`);
+    const value = this.$field.val();
+
+    if (value) {
+      const $selected = this.$element.find(`li[data-value="${value}"]`);
 
       if ($selected.length) {
         this._select($selected);

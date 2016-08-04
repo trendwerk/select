@@ -165,8 +165,10 @@
 	  }, {
 	    key: '_populate',
 	    value: function _populate() {
-	      if (this.$field.val()) {
-	        var $selected = this.$element.find('li[data-value="' + this.$field.val() + '"]');
+	      var value = this.$field.val();
+
+	      if (value) {
+	        var $selected = this.$element.find('li[data-value="' + value + '"]');
 
 	        if ($selected.length) {
 	          this._select($selected);
