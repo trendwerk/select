@@ -53,7 +53,7 @@ $('.fake-select').asSelect();
 ```
 
 ## Classes
-This plugin uses the below classes for states:
+This plugin uses the following classes for states:
 - **`open`**: when the select box is opened
 - **`active`**: for the currently selected option
 
