@@ -83,6 +83,8 @@ Styling is a bit opinionated. Use the settings to tweak the styling as you wish.
 
 
 #### Arrow
+Uses a map with the following options:
+
 | Option | Default | Description |
 | :--- | :--- | :--- |
 | `color` | `black` | Color
@@ -90,6 +92,8 @@ Styling is a bit opinionated. Use the settings to tweak the styling as you wish.
 | `size` | `6px 5px` | Size
 
 #### Padding
+Uses a map with the following options:
+
 | Option | Default |
 | :--- | :--- |
 | `horizontal` | `20px`
@@ -98,7 +102,7 @@ Styling is a bit opinionated. Use the settings to tweak the styling as you wish.
 #### Webkit scrollbar
 On Webkit on OS X and iOS, scrollbars are automatically hidden. This makes the select box not very user-friendly, because users cannot see that there are more options until they try scrolling.
 
-This package implements a Webkit scrollbar that is always shown. It has several options, but you can disable this function entirely by setting this option to `false`.
+This package implements a Webkit scrollbar that is always shown. You can disable this function entirely by setting this option to `false`. Otherwise, you can pass a map with the following options:
 
 | Option | Default | Description |
 | :--- | :--- | :--- |
