@@ -18,7 +18,7 @@ Using `select` is a two-step process:
 ### Implementation
 
 #### HTML
-The HTML should be formatted like the example below. Use a `hidden` input field if you'd like to use the data in a form. You can hook into the jQuery plugin (see [Options](https://github.com/trendwerk/select#options)) if you want to do something else with the selected data.
+The HTML should be formatted like the example below. Use a `hidden` input field if you'd like to use the data in a form. You can hook into the jQuery plugin (see [Options](https://github.com/trendwerk/select#jquery-plugin)) if you want to do something else with the selected data.
 
 ```html
 <div class="my-select-box">
