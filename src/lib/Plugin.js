@@ -9,8 +9,10 @@ export class Plugin {
         speed: 200,
       };
 
-      const select = new Select(jQuery(this), jQuery.extend(defaults, options));
-      select.init();
+      this.each(function initialize() {
+        const select = new Select(jQuery(this), jQuery.extend(defaults, options));
+        select.init();
+      });
     };
   }
 }

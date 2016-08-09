@@ -77,6 +77,7 @@
     padding: 0;
     position: absolute;
     width: 100%;
+    z-index: 1;
 
     @media(min-height: (map-get($settings, 'max-height') / map-get($settings, 'max-height-screen-ratio'))) {
       max-height: map-get($settings, 'max-height');
