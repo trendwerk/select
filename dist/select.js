@@ -190,13 +190,10 @@
 	    key: '_populate',
 	    value: function _populate() {
 	      var value = this.$field.val();
+	      var $selected = this.$items.filter('[data-value="' + value + '"]').first();
 
-	      if (value) {
-	        var $selected = this.$items.filter('[data-value="' + value + '"]').first();
-
-	        if ($selected.length) {
-	          this._select($selected);
-	        }
+	      if ($selected.length) {
+	        this._select($selected);
 	      }
 	    }
 	  }, {

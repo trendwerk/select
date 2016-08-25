@@ -68,13 +68,10 @@ export class Select {
 
   _populate() {
     const value = this.$field.val();
+    const $selected = this.$items.filter(`[data-value="${value}"]`).first();
 
-    if (value) {
-      const $selected = this.$items.filter(`[data-value="${value}"]`).first();
-
-      if ($selected.length) {
-        this._select($selected);
-      }
+    if ($selected.length) {
+      this._select($selected);
     }
   }
 
