@@ -171,6 +171,10 @@
 	          _this._select(jQuery(event.target));
 	        }
 	      });
+
+	      this.$field.on('change', function () {
+	        _this._populate();
+	      });
 	    }
 	  }, {
 	    key: '_getOutsideEvent',

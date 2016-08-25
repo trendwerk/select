@@ -52,6 +52,10 @@ export class Select {
         this._select(jQuery(event.target));
       }
     });
+
+    this.$field.on('change', () => {
+      this._populate();
+    });
   }
 
   _getOutsideEvent() {
