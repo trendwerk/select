@@ -9,7 +9,7 @@ bower install trendwerk/select --save
 ```
 
 ## Usage
-Using `select` is a two-step process:
+Using `select` is a three-step process:
 
 1. **HTML**: Create an HTML template for the select box;
 2. **JS**: Use the jQuery plugin on the element that should behave like a select box;
